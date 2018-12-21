@@ -1,0 +1,23 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5.3
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: install minitest
+          command: |
+            gem install minitest
+        
+      - run:
+          name: run test day 1
+          command: |
+            ruby day_1/chronal_calibration_test.rb

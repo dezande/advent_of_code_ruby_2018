@@ -71,4 +71,87 @@ class ChronalCalibrationTest < Minitest::Test
     chronal_calibration.update(frequencies)
     assert_equal -6, chronal_calibration.value
   end
+
+  def test_example_frequency
+    skip
+    frequencies = <<-HEREDOC
+      +1
+      -2
+      +3
+      +1
+    HEREDOC
+
+    chronal_calibration = ChronalCalibration.new
+    chronal_calibration.update(frequencies)
+    assert_equal 2, chronal_calibration.first_frequency
+  end
+
+  def test_first_frequency
+    skip
+    frequencies = <<-HEREDOC
+      +1
+      -1
+    HEREDOC
+
+    chronal_calibration = ChronalCalibration.new
+    chronal_calibration.update(frequencies)
+    assert_equal 0, chronal_calibration.first_frequency
+  end
+
+  def test_first_frequency_bis
+    skip
+    frequencies = <<-HEREDOC
+      +1
+      -1
+    HEREDOC
+
+    chronal_calibration = ChronalCalibration.new(1)
+    chronal_calibration.update(frequencies)
+    assert_equal 1, chronal_calibration.first_frequency
+  end
+
+  def test_second_frequency
+    skip
+    frequencies = <<-HEREDOC
+      +3
+      +3
+      +4
+      -2
+      -4
+    HEREDOC
+
+    chronal_calibration = ChronalCalibration.new
+    chronal_calibration.update(frequencies)
+    assert_equal 10, chronal_calibration.first_frequency
+  end
+
+  def test_third_frequency
+    skip
+    frequencies = <<-HEREDOC
+      -6
+      +3
+      +8
+      +5
+      -6
+    HEREDOC
+
+    chronal_calibration = ChronalCalibration.new
+    chronal_calibration.update(frequencies)
+    assert_equal 5, chronal_calibration.first_frequency
+  end
+
+  def test_last_frequency
+    skip
+    frequencies = <<-HEREDOC
+      +7
+      +7
+      -2
+      -7
+      -4
+    HEREDOC
+
+    chronal_calibration = ChronalCalibration.new
+    chronal_calibration.update(frequencies)
+    assert_equal 14, chronal_calibration.first_frequency
+  end
 end

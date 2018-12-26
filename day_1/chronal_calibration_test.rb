@@ -127,7 +127,6 @@ class ChronalCalibrationTest < Minitest::Test
   end
 
   def test_last_frequency
-    skip
     frequencies = <<-HEREDOC
       +7
       +7

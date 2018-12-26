@@ -9,4 +9,5 @@ file = File.read('input.txt')
 
 chronal_calibration.update(file)
 
-puts "The awser for the first part is #{chronal_calibration.value}"
+puts "The awser is #{chronal_calibration.value}"
+puts "The first frequency is #{chronal_calibration.first_frequency}"

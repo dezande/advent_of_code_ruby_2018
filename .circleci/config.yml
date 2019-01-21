@@ -21,3 +21,8 @@ jobs:
           name: run test day 1
           command: |
             ruby day_1/chronal_calibration_test.rb
+
+      - run:
+          name: run test day 2
+          command: |
+            ruby day_2/inventory_management_system_test.rb

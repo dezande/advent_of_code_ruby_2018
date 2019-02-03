@@ -50,7 +50,7 @@ class InventoryManagementSystemTest < Minitest::Test
     input = <<-HEREDOC
       abcdef
       bababc
-      abbcde 
+      abbcde
       abcccd
       aabcdd
       abcdee
@@ -58,5 +58,34 @@ class InventoryManagementSystemTest < Minitest::Test
     HEREDOC
 
     assert_equal 12, InventoryManagementSystem.checksum(input)
+  end
+
+  def test_find_letter_commun
+    input = <<-HEREDOC
+      abcde
+      fghij
+      klmno
+      pqrst
+      fguij
+      axcye
+      wvxyz
+    HEREDOC
+
+    assert_equal 'fgij', InventoryManagementSystem.find_letter_commun(input)
+  end
+
+  def test_find_letter_commun_2
+    input = <<-HEREDOC
+      abcde
+      bcdea
+      fghij
+      klmno
+      pqrst
+      fguij
+      axcye
+      wvxyz
+    HEREDOC
+
+    assert_equal 'fgij', InventoryManagementSystem.find_letter_commun(input)
   end
 end

@@ -2,7 +2,7 @@ class NoMatterHowYouSliceIt
   attr_reader :claims
 
   def initialize(inputs)
-    @claims = inputs.map do |input|
+    @claims = inputs.lines.map do |input|
       {
         id: id(input),
         left_edge: left_edge(input),
@@ -11,6 +11,20 @@ class NoMatterHowYouSliceIt
         tall: tall(input)
       }
     end
+  end
+
+  def square_inches
+    claims
+      .each_with_object(Array.new(1000) { Array.new(1000, 0) }) do |claim, memo|
+        claim[:wide].times do |x|
+          claim[:tall].times do |y|
+            memo[x + claim[:left_edge]][y + claim[:top_edge]] += 1
+          end
+        end
+      end
+      .flatten
+      .select { |cell| cell > 1 }
+      .count
   end
 
   private

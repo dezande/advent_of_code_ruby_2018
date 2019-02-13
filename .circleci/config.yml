@@ -26,3 +26,7 @@ jobs:
           name: run test day 2
           command: |
             ruby day_2/inventory_management_system_test.rb
+      - run:
+          name: run test day 3
+          command: |
+            ruby day_3/no_matter_how_you_slice_it_test.rb
